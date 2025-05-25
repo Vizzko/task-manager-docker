@@ -135,7 +135,7 @@ http://localhost:<NodePort>
 
 ## ✨ Credits
 
-Created by [Vizzko (Fred)](https://github.com/Vizzko)
+Created by [Vizzko (Anujjith P R)](https://github.com/Vizzko)
 
 ---
 
