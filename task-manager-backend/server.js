@@ -11,11 +11,13 @@ const port = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// MongoDB connection
 mongoose.connect("mongodb://mongo:27017/taskify", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
 
+// Task schema
 const taskSchema = new mongoose.Schema({
   id: String,
   title: String,
@@ -26,6 +28,11 @@ const taskSchema = new mongoose.Schema({
 });
 
 const Task = mongoose.model("Task", taskSchema);
+
+// Root route (to prevent "Cannot GET /")
+app.get("/", (req, res) => {
+  res.send("Task Manager API is running!");
+});
 
 // Get all tasks
 app.get("/tasks", async (req, res) => {
@@ -63,6 +70,7 @@ app.delete("/tasks/:id", async (req, res) => {
   res.sendStatus(204);
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`🌿 Server with MongoDB running at http://localhost:${port}`);
 });
